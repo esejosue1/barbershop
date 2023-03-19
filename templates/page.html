@@ -1,0 +1,20 @@
+{% extends 'staples/base.html' %}
+
+{% load static %}
+
+{% block content %}
+{% include 'staples/breadcrumbs.html' %}
+{% include 'staples/messages.html' %}
+
+{% block whatpage %}
+
+{% if request.path == '/projects/' %}
+{%include 'jobs/projects.html'%}
+
+{% endif %}
+
+{% endblock whatpage %}
+
+
+
+{% endblock %}

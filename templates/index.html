@@ -1,0 +1,163 @@
+{% extends 'staples/base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero">
+
+    <div class="info d-flex align-items-center">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-left">
+            <h2 data-aos="fade-down">Welcome to <span>The Hills Barbershops</span></h2>
+            <p data-aos="fade-up">OUR HAIR STYLES MAKE YOU LOOK ELEGANT</p>
+            <a data-aos="fade-up" data-aos-delay="200" href="" class="btn-get-started">Get Quote</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+
+      <div class="carousel-item active" style="background-image: url(/static/assets/img/the_hills_barber.jpg)"></div>
+
+
+      
+
+    </div>
+
+  </section><!-- End Hero Section -->
+
+  <main id="main">
+        <!-- ======= Alt Services Section ======= -->
+        <section id="alt-services" class="alt-services">
+          <div class="container" data-aos="fade-up">
+    
+            <div class="row justify-content-around gy-4">
+              <div class="col-lg-6 img-bg" style="background-image: url(/static/assets/img/alt-services.jpg);" data-aos="zoom-in" data-aos-delay="100"></div>
+    
+              <div class="col-lg-5 d-flex flex-column justify-content-center">
+                <h3>Enim quis est voluptatibus aliquid consequatur fugiat</h3>
+                <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi</p>
+    
+                <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="100">
+                  <i class="bi bi-easel flex-shrink-0"></i>
+                  <div>
+                    <h4><a href="" class="stretched-link">Lorem Ipsum</a></h4>
+                    <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+                  </div>
+                </div><!-- End Icon Box -->
+    
+                <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="200">
+                  <i class="bi bi-patch-check flex-shrink-0"></i>
+                  <div>
+                    <h4><a href="" class="stretched-link">Nemo Enim</a></h4>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
+                  </div>
+                </div><!-- End Icon Box -->
+    
+                <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="300">
+                  <i class="bi bi-brightness-high flex-shrink-0"></i>
+                  <div>
+                    <h4><a href="" class="stretched-link">Dine Pad</a></h4>
+                    <p>Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit. Sunt aut deserunt minus aut eligendi omnis</p>
+                  </div>
+                </div><!-- End Icon Box -->
+    
+                <div class="icon-box d-flex position-relative" data-aos="fade-up" data-aos-delay="400">
+                  <i class="bi bi-brightness-high flex-shrink-0"></i>
+                  <div>
+                    <h4><a href="" class="stretched-link">Tride clov</a></h4>
+                    <p>Est voluptatem labore deleniti quis a delectus et. Saepe dolorem libero sit non aspernatur odit amet. Et eligendi</p>
+                  </div>
+                </div><!-- End Icon Box -->
+    
+              </div>
+            </div>
+    
+          </div>
+        </section><!-- End Alt Services Section -->
+    
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Services</h2>
+          <p>We offer a variety of services for construction. If you dont see a specific service, contact us for more details.</p>
+        </div>
+
+        <div class="row gy-4">
+          {% for service in service_links %}
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item  position-relative">
+              <img src="{{service.image.url}}" class="img-fluid" alt="">
+              <div style="text-align:center">
+                <h3>{{service.title}}</h3>
+              <p>{{service.introduction}}</p>
+              <a href="{{service.get_url}}" class="readmore stretched-link">Learn more <i class="bi bi-arrow-right"></i></a>
+            </div>
+            </div>
+          </div><!-- End Service Item -->
+          {% endfor %}
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+<!-- ======= Our Projects Section ======= -->
+<section id="projects" class="projects">
+  <div class="container" data-aos="fade-up">\
+    <div class="section-header">
+      <h2>Our Projects</h2>
+      <p>Most recent projects with images, detailed information of the project procedure and after work information</p>
+    </div>
+
+    <div class="portfolio-isotope" data-portfolio-filter="*" data-portfolio-layout="masonry" data-portfolio-sort="original-order">
+
+      <ul class="portfolio-flters" data-aos="fade-up" data-aos-delay="100">
+        <li data-filter="*" class="filter-active">All</li>
+        {% for category in links %}
+        <li data-filter=".filter-{{category.job_category|lower}}">{{category.job_category|lower}}</li>
+        {% endfor %}
+      </ul><!-- End Projects Filters -->
+
+      <div class="row gy-4 portfolio-container" data-aos="fade-up" data-aos-delay="200">
+        {% for job in gloabal_projects %}
+        <div class="col-lg-4 col-md-6 portfolio-item filter-remodeling">
+          <div class="portfolio-content h-200">
+            <img src="{{job.project_img.url}}" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>{{job.project_title}}</h4>
+              <p>{{job.project_description}}</p>
+              <a href="{{job.project_img.url}}" title="{{job.project_title}}" data-gallery="portfolio-gallery-remodeling" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+              <a href="project-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+            </div>
+          </div>
+        </div><!-- End Projects Item -->
+        {% endfor %}
+        
+
+      </div><!-- End Projects Container -->
+
+    </div>
+
+  </div>
+</section><!-- End Our Projects Section -->
+  
+
+  </main><!-- End #main -->
+
+  
+
+
+
+
+
+</body>
+
+</html>
+{% endblock content %}
