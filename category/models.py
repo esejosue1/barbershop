@@ -4,8 +4,8 @@ from django.db import models
 
 
 #create services model
-class Services(models.Model):
-    service=models.CharField(max_length=50, unique=True)
+class typeOfService(models.Model):
+    type_of_service=models.CharField(max_length=50, unique=True)
     slug=models.SlugField(max_length=50, unique=True)
     
 
@@ -14,4 +14,5 @@ class Services(models.Model):
         verbose_name_plural='categories'
 
     def __str__(self):
-        return self.service
+        return self.type_of_service
+    

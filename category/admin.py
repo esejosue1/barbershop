@@ -1,10 +1,10 @@
 from django.contrib import admin
-from .models import Services
+from .models import typeOfService
 
 # Register your models here.
 
 class ServicesAdmin(admin.ModelAdmin):
-    prepopulated_fields={'slug': ('service',)}
-    list_display=("service", 'slug')
+    prepopulated_fields={'slug': ('type_of_service',)}
+    list_display=("type_of_service", 'slug')
 
-admin.site.register(Services, ServicesAdmin)
+admin.site.register(typeOfService, ServicesAdmin)
