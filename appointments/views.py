@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from datetime import datetime, timedelta
+from .models import *
+from django.contrib import messages
 
-# Create your views here.
+
+def appointments(request):
+    return render(request, 'appointments/appointments.html')
