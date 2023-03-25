@@ -1,4 +1,5 @@
 
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from category.models import Services
@@ -42,10 +43,16 @@ class BusinessHour(models.Model):
 
 class Appointments(models.Model):
     #user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    service = models.CharField(max_length=50,  default="Hair Cut")
+    #service=models.ForeignKey(Services, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    phone = models.CharField(max_length=100)
+    service = models.ForeignKey(Services, on_delete=models.CASCADE)
     barber=models.ForeignKey(Barbers, on_delete=models.CASCADE,null=True)
-    day = models.DateField(default=datetime.now)
+    date = models.DateTimeField()
     time = models.CharField(max_length=10, choices=TIME_CHOICES, default="3 PM")
+    note=models.TextField(max_length=500, blank=True)
     time_ordered = models.DateTimeField(default=datetime.now, blank=True)
 
     class Meta:
@@ -53,4 +60,4 @@ class Appointments(models.Model):
         verbose_name_plural='Appointmets'
 
     def __str__(self):
-        return f"{self.service} | day: {self.day} | time: {self.time}"
+        return f"{self.service} | day: {self.date} | time: {self.time}"
