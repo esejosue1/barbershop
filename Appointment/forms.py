@@ -13,9 +13,10 @@ class AppointmentForm(ModelForm):
     service=forms.TextInput()
     barber=forms.TextInput()
     date=forms.TextInput()
+    day=forms.TextInput()
     time=forms.TextInput()
     note=forms.TextInput()
 
     class Meta:
         model=Appointments
-        fields=['first_name', 'last_name', 'email', 'phone', 'service', 'barber', 'date', 'time', 'note']
+        fields=['first_name', 'last_name', 'email', 'phone', 'service', 'barber', 'date','day', 'time', 'note']

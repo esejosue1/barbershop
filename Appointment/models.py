@@ -19,16 +19,20 @@ TIME_CHOICES = (
     ("7 PM", "7 PM"),
 )
 
+
+WEEKDAY_CHOICES = (
+        ('Monday','Monday'),
+        ('Tuesday','Tuesday'),
+        ('Wednesday','Wednesday'),
+        ('Thursday','Thursday'),
+        ('Friday','Friday'),
+        ('Saturday','Saturday'),
+        ('Sunday','Sunday'),
+        
+)
+
+
 class BusinessHour(models.Model):
-    WEEKDAY_CHOICES = [
-        (0, _('Monday')),
-        (1, _('Tuesday')),
-        (2, _('Wednesday')),
-        (3, _('Thursday')),
-        (4, _('Friday')),
-        (5, _('Saturday')),
-        (6, _('Sunday')),
-    ]
 
     day = models.IntegerField(choices=WEEKDAY_CHOICES)
     opening_time = models.TimeField()
@@ -51,6 +55,7 @@ class Appointments(models.Model):
     service = models.ForeignKey(Services, on_delete=models.CASCADE)
     barber=models.ForeignKey(Barbers, on_delete=models.CASCADE,null=True)
     date = models.DateTimeField()
+    day=models.CharField(max_length=10, choices=WEEKDAY_CHOICES, default="Monday")
     time = models.CharField(max_length=10, choices=TIME_CHOICES, default="3 PM")
     note=models.TextField(max_length=500, blank=True)
     time_ordered = models.DateTimeField(default=datetime.now, blank=True)
