@@ -8,7 +8,7 @@ class businessHoursAdmin(admin.ModelAdmin):
     list_filter = ('day',)
 
 class AppointmentsAdmin(admin.ModelAdmin):
-    list_display=('date','time','service', 'barber', 'phone')
+    list_display=('date','first_name','time','service', 'barber', 'phone')
 
 admin.site.register(BusinessHour, businessHoursAdmin)
 admin.site.register(Appointments,AppointmentsAdmin)

@@ -6,17 +6,20 @@ from .models import Appointments
 from django.forms import ModelForm
 
 class AppointmentForm(ModelForm):
-    first_name=forms.TextInput()
-    last_name=forms.TextInput()
-    email=forms.TextInput()
-    phone=forms.TextInput()
-    service=forms.TextInput()
-    barber=forms.TextInput()
-    date=forms.TextInput()
-    day=forms.TextInput()
-    time=forms.TextInput()
-    note=forms.TextInput()
 
     class Meta:
         model=Appointments
-        fields=['first_name', 'last_name', 'email', 'phone', 'service', 'barber', 'date','day', 'time', 'note']
+        fields=('first_name', 'last_name', 'email', 'phone', 'service', 'barber', 'date','day', 'time', 'note')
+
+        widgets={
+            'first_name':forms.TextInput(attrs={'class':'form-control'}),
+            'last_name':forms.TextInput(attrs={'class':'form-control'}),
+            'email':forms.EmailInput(attrs={'class':'form-control'}),
+            'phone':forms.TextInput(attrs={'class':'form-control'}),
+            'service':forms.Select(attrs={'class':'form-control'}),
+            'barber':forms.Select(attrs={'class':'form-control'}),
+            'date':forms.TextInput(attrs={'class':'form-control'}),
+            'day':forms.Select(attrs={'class':'form-control'}),
+            'time':forms.Select(attrs={'class':'form-control'}),
+            'note':forms.TextInput(attrs={'class':'form-control'}),
+        }
